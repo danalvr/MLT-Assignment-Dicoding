@@ -143,7 +143,7 @@ from sklearn.model_selection import train_test_split
 
 X = house_df.drop(["price"],axis =1)
 y = house_df["price"]
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 123)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)
 
 print(f'Total # of sample in whole dataset: {len(X)}')
 print(f'Total # of sample in train dataset: {len(X_train)}')
@@ -197,10 +197,8 @@ models.loc['train_mse','knn'] = mean_squared_error(y_pred = knn.predict(X_train)
 Implementing the Random Forest algorithm.
 """
 
-# Impor library yang dibutuhkan
 from sklearn.ensemble import RandomForestRegressor
 
-# buat model prediksi
 RF = RandomForestRegressor(n_estimators=50, max_depth=16, random_state=55, n_jobs=-1)
 RF.fit(X_train, y_train)
 
@@ -253,3 +251,12 @@ for name, model in model_dict.items():
     pred_dict['prediksi_'+name] = model.predict(prediksi).round(1)
 
 pd.DataFrame(pred_dict)
+
+"""
+
+```
+# Ini diformat sebagai kode
+```
+
+"""
+
