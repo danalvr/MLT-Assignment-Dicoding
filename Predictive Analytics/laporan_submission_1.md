@@ -69,19 +69,9 @@ Pada gambar diatas dapat disimpulkan bahwa _area_, _bathrooms_ dan _stories_ san
 
 - Teknik _Principal Component Analysis_ (PCA) : Penerapan teknik PCA bertujuan untuk mereduksi dimensi fitur dalam dataset. Dengan mempertahankan sebagian besar varian data, PCA membantu mengurangi kompleksitas model. Hal ini bermanfaat untuk mempercepat waktu pelatihan, dan meningkatkan generalisasi model pada data baru.
 
-- Teknik _Train-Test Split_ : Membagi dataset menjadi data latih dan data uji dengan perbandingan 8:2 dimana data latih digunakan untuk melatih model dan data uji digunakan untuk menguji kinerja model. Rasio 8:2 digunakan karena dataset memilki jumlah yang sedikit sehingga dibutuhkan data latih yang banyak dan data uji yang tidak terlalu sedikit. Hal tersebut telah dibuktikan dengan membandingkan hasil pengujian dari model dengan rasio 7:3 dan 9:1 dengan menggunakan metrik MSE. Berikut merupakan hasil pengujian dari 3 rasio berbeda.
+- Teknik _Train-Test Split_ : Membagi dataset menjadi data latih dan data uji dengan perbandingan 8:2 dimana data latih digunakan untuk melatih model dan data uji digunakan untuk menguji kinerja model. Rasio 8:2 digunakan karena dataset memilki jumlah yang sedikit sehingga dibutuhkan data latih yang banyak dan data uji yang tidak terlalu sedikit. Hal tersebut telah dibuktikan dengan membandingkan hasil pengujian dari model dengan rasio 7:3 dan 9:1 dengan menggunakan metrik MSE. Hasil pengujian dengan rasio berbeda akan dilampirkan pada bagian _evaluation_.
 
-_Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 7:3 
-<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/f3bd0e78-f991-4e13-9bac-653311a0ada7" alt="gambar korelasi matrix" />
-
-
-_Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 8:2 
-<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/ccc12d5b-42a9-42ac-9753-7b0626caccaf" alt="gambar korelasi matrix" />
-
-
-_Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 9:1 
-<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/2a251a20-1b91-4466-84b3-e785a539484f" alt="gambar korelasi matrix" />
-
+- Teknik _Standardization_ : Melakukan _standardization_ atau normalisasi dataset agar algoritma _machine learning_ yang digunakan memiliki performa yang lebih baik dan bekerja lebih cepat. Normalisasi bekerja dengan cara menyeragamkan dataset agar memilki skala yang relatif sama. Adapun teknik yang digunakan dalam normalisasi dataset yaitu dengan metode _StandardScaler_. Dengan menggunakan _StandardScaler_, setiap fitur numerik diubah sedemikian rupa sehingga memiliki rata-rata nol dan deviasi standar satu.
 
 ## Modeling
 
@@ -102,23 +92,14 @@ Kekurangan:
 - Memerlukan Penanganan Data yang Baik: KNN memerlukan penanganan data yang baik, seperti normalisasi, karena rentan terhadap perbedaan skala antar fitur.
 
 Implementasi:
-```
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.metrics import mean_squared_error
 
-knn = KNeighborsRegressor(n_neighbors=10)
-knn.fit(X_train, y_train)
-
-models.loc['train_mse','knn'] = mean_squared_error(y_pred = knn.predict(X_train), y_true=y_train)
-```
-
-Pertama, kita menginisialisasi model KNN Regressor dengan menyertakan parameter penting, seperti _n_neighbors_ yang menentukan jumlah tetangga terdekat yang akan dipertimbangkan dalam prediksi. Setelah inisialisasi, model dilatih pada data latih (_X_train_ dan _y_train_) dengan memanggil metode fit.
+Pertama, dilakukan inisialisasi model KNN Regressor dengan menyertakan parameter penting, seperti _n_neighbors_ yang menentukan jumlah tetangga terdekat yang akan dipertimbangkan dalam prediksi. Setelah inisialisasi, model dilatih pada data latih (_X_train_ dan _y_train_) dengan memanggil metode fit.
 
 Proses pelatihan KNN tidak melibatkan pembentukan model yang kompleks seperti pada beberapa algoritma lainnya. Sebaliknya, selama tahap prediksi, algoritma menghitung jarak antara _instance_ yang akan diprediksi dan semua _instance_ dalam data latih. _Instance-instance_ ini kemudian diurutkan berdasarkan jarak, dan _k-neighbors_ terdekat dipilih.
 
-Prediksi akhir untuk instance yang diberikan adalah agregasi dari nilai target tetangga-tetangga ini. Pada regresi, ini sering kali merupakan rata-rata dari nilai target tetangga.
+Prediksi akhir untuk _instance_ yang diberikan adalah agregasi dari nilai target tetangga-tetangga ini. Pada regresi, ini sering kali merupakan rata-rata dari nilai target tetangga.
 
-Setelah pelatihan selesai, kita mengukur kinerja model pada data latih menggunakan Mean Squared Error (MSE). MSE memberikan gambaran tentang seberapa baik model dapat memprediksi nilai target dengan membandingkan prediksi dengan nilai sebenarnya. Hasil evaluasi ini kemudian disimpan dalam struktur data models, khususnya dalam variabel _train_mse_.
+Setelah pelatihan, selanjutnya mengukur kinerja model pada data latih menggunakan Mean Squared Error (MSE). MSE memberikan gambaran tentang seberapa baik model dapat memprediksi nilai target dengan membandingkan prediksi dengan nilai sebenarnya. Hasil evaluasi ini kemudian disimpan dalam struktur data model, khususnya dalam variabel _train_mse_.
 
 ### Algoritma Random Forest:
 
@@ -135,20 +116,12 @@ Kekurangan:
 - Memerlukan Banyak Memori: Karena modelnya terdiri dari banyak pohon, Random Forest membutuhkan lebih banyak memori.
 
 Implementasi:
-```
-from sklearn.ensemble import RandomForestRegressor
 
-RF = RandomForestRegressor(n_estimators=50, max_depth=16, random_state=55, n_jobs=-1)
-RF.fit(X_train, y_train)
-
-models.loc['train_mse','RandomForest'] = mean_squared_error(y_pred=RF.predict(X_train), y_true=y_train)
-```
-
-Pertama, kita inisialisasi model RandomForestRegressor dengan beberapa parameter seperti _n_estimators_ (jumlah pohon), _max_depth_ (kedalaman maksimum setiap pohon), dan _random_state_ (untuk reproduktibilitas). Setelah inisialisasi, model dilatih menggunakan data latih (_X_train_ dan _y_train_) dengan memanggil metode _fit_.
+Pertama, dilakukan inisialisasi model RandomForestRegressor dengan beberapa parameter seperti _n_estimators_ (jumlah pohon), _max_depth_ (kedalaman maksimum setiap pohon), dan _random_state_ (untuk reproduktibilitas). Setelah inisialisasi, model dilatih menggunakan data latih (_X_train_ dan _y_train_) dengan memanggil metode _fit_.
 
 Selama proses pelatihan, Random Forest membuat sejumlah pohon keputusan yang diterapkan pada subset acak dari data latih. Setiap pohon menghasilkan prediksi, dan prediksi dari seluruh pohon digunakan untuk menghasilkan prediksi akhir model. Pemilihan acak fitur pada setiap pembuatan pohon dan agregasi prediksi dari berbagai pohon membantu model ini dalam mengatasi _overfitting_ dan meningkatkan generalisasi.
 
-Setelah pelatihan selesai, kita mengukur kinerja model menggunakan metrik evaluasi Mean Squared Error (MSE) pada data latih. MSE mengukur seberapa baik model dapat memprediksi nilai target dengan membandingkan prediksi dengan nilai sebenarnya.
+Setelah pelatihan selesai, selanjutnya mengukur kinerja model menggunakan metrik evaluasi Mean Squared Error (MSE) pada data latih. MSE mengukur seberapa baik model dapat memprediksi nilai target dengan membandingkan prediksi dengan nilai sebenarnya.
 
 Terakhir, hasil evaluasi dalam bentuk MSE pada data latih disimpan ke dalam struktur data models. Va­riabel train_mse menyimpan nilai MSE yang mencerminkan sejauh mana model sesuai dengan data latih.
 
@@ -159,21 +132,15 @@ Kelebihan:
 - Mampu Mengatasi Bias (_Boosting_): Algoritma Boosting dapat mengurangi bias dan meningkatkan akurasi model.
 - Efektif pada Dataset Besar: Meskipun lebih kompleks daripada KNN, algoritma Boosting dapat efektif bekerja pada dataset yang besar.
 - Mengurangi Overfitting (AdaBoost): Beberapa implementasi Boosting, seperti AdaBoost, dapat membantu mengurangi _overfitting_.
-  Kekurangan:
+
+Kekurangan:
 
 - Sensitif terhadap _Noise_ dan _Outlier_: Algoritma Boosting dapat menjadi sensitif terhadap _noise_ dan _outlier_ dalam data.
 - Memerlukan Penyesuaian Parameter yang Baik: Memilih parameter yang tepat untuk Boosting dapat menjadi tantangan dan memerlukan penyesuaian yang cermat.
 
 Implementasi:
-```
-from sklearn.ensemble import AdaBoostRegressor
 
-boosting = AdaBoostRegressor(learning_rate=0.05, random_state=55)
-boosting.fit(X_train, y_train)
-models.loc['train_mse','Boosting'] = mean_squared_error(y_pred=boosting.predict(X_train), y_true=y_train)
-```
-
-Pertama, kita menginisialisasi model AdaBoost Regressor dengan menyertakan parameter seperti _learning_rate_, yang mengontrol kontribusi dari setiap model lemah. Selanjutnya, model dilatih pada data latih (_X_train_ dan _y_train_) menggunakan metode _fit_.
+Pertama, dilakukan inisialisasi model AdaBoost Regressor dengan menyertakan parameter seperti _learning_rate_, yang mengontrol kontribusi dari setiap model lemah. Selanjutnya, model dilatih pada data latih (_X_train_ dan _y_train_) menggunakan metode _fit_.
 
 Proses pelatihan terdiri dari serangkaian iterasi di mana model lemah (dalam konteks ini, Regressor) dibangun. Pada setiap iterasi, bobot diberikan pada setiap _instance_ berdasarkan seberapa baik model sebelumnya dapat memprediksi _instance_ tersebut. Model lemah baru kemudian dilatih pada data dengan bobot ini.
 
@@ -197,6 +164,23 @@ Keterangan:
 
 
 Semakin kecil nilai MSE, semakin baik modelnya. Nilai MSE yang rendah menunjukkan bahwa model cenderung memiliki prediksi yang dekat dengan nilai sebenarnya. MSE memberikan penalti yang besar untuk kesalahan yang besar, karena selisih di kuadrat sebelum dihitung rata-rata.
+
+Berikut hasil visualisasi pengujian dengan rasio berbeda:
+
+
+_Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 7:3 
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/f3bd0e78-f991-4e13-9bac-653311a0ada7" alt="gambar korelasi matrix" />
+
+
+_Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 8:2 
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/ccc12d5b-42a9-42ac-9753-7b0626caccaf" alt="gambar korelasi matrix" />
+
+
+_Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 9:1 
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/2a251a20-1b91-4466-84b3-e785a539484f" alt="gambar korelasi matrix" />
+
+Berdasarkan hasil pengujian tersebut maka rasio yang digunakan dalam pembagian data latih dan data uji adalah 8:2 sehingga hasil evaluasi model dan prediksi menggunakan rasio tersebut.
+
 
 Berikut merupakan hasil evaluasi:
 |          | train             | test              |
