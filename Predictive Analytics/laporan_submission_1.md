@@ -165,21 +165,23 @@ Keterangan:
 
 Semakin kecil nilai MSE, semakin baik modelnya. Nilai MSE yang rendah menunjukkan bahwa model cenderung memiliki prediksi yang dekat dengan nilai sebenarnya. MSE memberikan penalti yang besar untuk kesalahan yang besar, karena selisih di kuadrat sebelum dihitung rata-rata.
 
-Berikut hasil visualisasi pengujian dengan rasio berbeda:
-
+Sebelumnya telah dijelaskan pada tahap _preparation_ penggunaan teknik _split data_ menggunakan rasio 8:2 sebagai parameter pembagian data latih dan data uji. Berikut merupakan hasil visualisasi pengujian dengan rasio berbeda menggunakan metrik MSE:
 
 _Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 7:3 
+
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/f3bd0e78-f991-4e13-9bac-653311a0ada7" alt="gambar korelasi matrix" />
 
 
 _Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 8:2 
+
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/ccc12d5b-42a9-42ac-9753-7b0626caccaf" alt="gambar korelasi matrix" />
 
 
 _Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 9:1 
+
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/2a251a20-1b91-4466-84b3-e785a539484f" alt="gambar korelasi matrix" />
 
-Berdasarkan hasil pengujian tersebut maka rasio yang digunakan dalam pembagian data latih dan data uji adalah 8:2 sehingga hasil evaluasi model dan prediksi menggunakan rasio tersebut.
+Berdasarkan hasil pengujian tersebut maka rasio yang digunakan dalam pembagian data latih dan data uji adalah 8:2 sehingga hasil evaluasi model dan prediksi akan menggunakan rasio tersebut.
 
 
 Berikut merupakan hasil evaluasi:
