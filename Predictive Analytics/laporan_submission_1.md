@@ -184,7 +184,7 @@ _Training Loss_ dan _Test Loss_ dengan metrik MSE rasio 9:1
 Berdasarkan hasil pengujian tersebut maka rasio yang digunakan dalam pembagian data latih dan data uji adalah 8:2 sehingga hasil evaluasi model dan prediksi akan menggunakan rasio tersebut.
 
 
-Berikut merupakan hasil evaluasi:
+Berikut merupakan hasil evaluasi model:
 |          | train             | test              |
 |----------|-------------------|-------------------|
 | KNN      | 1209061703.782569 | 1903827800.545871 |
