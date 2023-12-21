@@ -94,8 +94,13 @@ Teknik yang digunakan pada tahapan data understanding:
 - Univariate Analysis: Untuk menganalisis setiap variabel secara terpisah dengan fokus pada distribusi nilai, statistik deskriptif, dan visualisasi.
 
   Berikut merupakan hasil analisis categorical:
+  
+  <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/05a5d35c-7872-44cd-8b80-dccf60b7618c" alt="gambar analisis kategori" />
+
 
   Berikut merupakan hasil analisis numerical:
+  
+  <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/5d7aceee-164b-40bc-a41f-c9fe64451853" alt="gambar analisis numerik" />
 
 Kemudian setelah melakukan analisis data menggunakan metode univariate analysis akan dilakukan tahapan data preprocessing dimana dataset credit.csv dan movie.csv akan digabung berdasarkan parameter movie_id pada dataset credit.
 
@@ -105,9 +110,16 @@ Pada tahap preparation dilakukan pengecekan dataset yang telah digabung sebelumn
 
 ### Demographic Filtering:
 
-Pada bagian demographic filtering akan dilakukan pemetaan terhadap dataset dengan membuat sebuah fitur baru bernama score. Fitur score tersebut akan digunakan sebagai parameter sistem rekomendasi yang akan dikalkulasikan untuk melihat kesamaan data film pada teknik content-based filtering.
+Pada bagian demographic filtering akan dilakukan pemetaan terhadap dataset dengan membuat sebuah fitur baru bernama score. Fitur score tersebut akan digunakan sebagai parameter sistem rekomendasi yang akan dikalkulasikan untuk melihat kesamaan data film pada teknik content-based filtering. Berikut merupakan rumus yang digunakan untuk menghitung WR atau fitur score: 
 
-Gambar rumus penjelasan fitur score:
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/c2e5a6df-9a2e-4e29-ade5-65e9c810298a" alt="gambar rumus WR" />
+
+Keterangan:
+
+- v adalah jumlah vote untuk film tersebut
+- m adalah jumlah vote minimum yang diperlukan untuk dicantumkan dalam bagan
+- R adalah total rata-rata vote film
+- C adalah rata-rata vote di seluruh laporan
 
 ## Modeling
 
