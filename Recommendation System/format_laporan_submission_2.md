@@ -140,6 +140,11 @@ Kekurangan:
 - Ketergantungan pada Representasi Fitur: Kualitas rekomendasi sangat bergantung pada kualitas representasi fitur item dan profil pengguna.
 
 Implementasi:
+_Content-based filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ yang memiliki kesamaan fitur dengan parameter berupa _overview_, _cast_, _crew_, _keyword_, _tagline_, dsb. Misal, ketika _user_ sedang menonton atau sedang mencari sebuah _film_ maka sistem akan memberikan rekomendasi _film_ yang mirip dengan _film_ yang telah ditonton oleh _user_ ataupun yang sedang dicari oleh _user_ baik dari segi _genre_, _overview_ ataupun sutradara dari _film_ tersebut. Untuk implementasi teknik _content-based filtering_ langkah awal yang dilakukan adalah merepresentasikan fitur _overview_ menjadi sebuah matriks menggunakan metode TF-IDF dengan fungsi TfidfVectorizer dari _library_ sklearn__. Langkah selanjutnya yaitu menghitung derajat kesamaan antar film dengan menggunakan fungsi _cosine_similarity_ dari library sklearn. Selanjutnya akan dibuat sebuah fungsi _get_recommendation_ dengan parameter berupa _title_ dan nilai dari _cosine similarity_ untuk menampilkan rekomendasi _film_ yang memiliki kemiripan dengan _film_ yang telah ditonton atau yang sedang dicari.
+
+Berikut merupakan hasil rekomendasi film menggunakan teknik _content-based filtering_ yang memiliki kemiripan dengan _film_ "Batman":
+
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/64bfd03c-34b0-4ebd-9b42-1c4eb2a957a4" alt="Hasil rekomendasi film" />
 
 ### Collaborative Filtering
 
@@ -156,6 +161,11 @@ Kekurangan:
 - Scalability: Kesulitan dalam skala besar karena memerlukan perhitungan yang kompleks untuk matriks kollaboratif, yang dapat menjadi tantangan pada dataset yang sangat besar.
 
 Implementasi:
+_Collaborative filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ berdasarkan informasi yang diberikan oleh _user_ lain. Dalam hal ini digunakan suatu pendekatan yaitu _user-based filtering_ untuk memberikan rekomendasi berupa _film_ berdasarkan kesamaan preferensi dengan _user_ lain.  Misal, _user_ A dan _user_ B menyukai beberapa film dengan genre yang sama. Jika _user_ A menyukai _film_ A maka sistem akan memberikan rekomendasi berupa _film_ A kepada _user_ B. Untuk implementasi teknik _collaborative filtering_ langkah awal yang dilakukan adalah melakukan _encoding_ pada fitur _userId_ dan _movieId_. Kemudian, hasil _encoding_ akan dipetakan pada variabel _ratings_df['user']_ dan _ratings_df['movie']_. Kemudian, dilakukan _split_ dataset menjadi data latih dan data uji dengan rasio 8:2. Kemudian, akan dibuat sebuah kelas _RecommenderNet_ dengan parameter _tf.keras.Model_ yang merupakan variabel bawaan yang diimport dari _framework_ TensorFlow. Kemudian, akan dibuat sebuah model dengan menginisiasi kelas _RecommenderNet_. Kemudian model akan di-_compile_. Kemudian akan ditraining dengan iterasi (_epochs_) sebanyak 10 kali.
+
+Berikut merupakan hasil rekomendasi _film_ dengan _userId_ yaitu 461:
+
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/34abbf64-a603-4dda-9d64-7d66004f7b64" alt="Hasil rekomendasi film" />
 
 ## Evaluation
 
