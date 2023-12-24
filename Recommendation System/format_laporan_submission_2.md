@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning - Daniel Alvaro Sormin
+![image](https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/a26609c9-731f-49b6-b5a4-7695d417ec5a)# Laporan Proyek Machine Learning - Daniel Alvaro Sormin
 
 ## Project Overview
 
@@ -169,17 +169,29 @@ Berikut merupakan hasil rekomendasi _film_ dengan _userId_ yaitu 461:
 
 ## Evaluation
 
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
+Pada tahap _evaluation_ akan dilakukan analisis terhadap sistem rekomendasi yang dibuat dengan menggunakan teknik _content-based filtering_ dan _collaborative filtering_.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+### _Content-Based Filtering_
+Evaluasi akan dilakukan dengan mencoba memasukkan _inputan_ sebuah _film_ berjudul "Avatar". Setelah itu sistem menampilkan list beberapa rekomendasi _film_ yang _relate_ dengan _film_ tersebut. Setelah melakukan analisis secara manual dengan mengecek _detail_ masing-masing dari _film_ tersebut sistem berhasil menampilkan rekomendasi _film_ yang relevan. Kemudian akan dihitung jumlah rekomendasi _film_ yang relevan menggunakan rumus _precision_. Hasilnya dari 3 _film_ sebanyak 3 _film_ menampilkan _film_ yang relevan dengan persentase sebesar 100%.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
+Berikut merupakan rumus dari _precision_:
 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/38bf2d9a-dec7-4121-95cd-983e628c10e1" alt="Hasil rekomendasi film" />
 
-**---Ini adalah bagian akhir laporan---**
+Berikut merupakan hasil rekomendasi _film_ yang relevan dengan _film_ "Avatar":
 
-_Catatan:_
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/b867ac85-a4ef-4010-922a-a7e116b4dec9" alt="Hasil rekomendasi film" />
 
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+### _Collaborative filtering_
+
+Evaluasi akan dilakukan dengan menggunakan metrik RMSE pada saat melakukan _training_ model. Cara kerja metrik RMSE yaitu dengan menghitung selisih antara nilai aktual dan nilai prediksi. Kemudian setiap selisih tersebut akan dikuadratkan dan hitung rata-rata-nya yang kemudian dilakukan akar kuadrat dari hasil rata-rata tersebut. Semakin kecil nilai RMSE, semakin baik kinerja dari model sistem rekomendasi yang dibuat.
+
+Berikut merupakan rumus RMSE:
+
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/454904ca-65f8-4c92-b1ba-eea865ca2b56" alt="Metrik RMSE" />
+
+Berikut merupakan hasil visualisasi data latih dan data uji menggunakan metrik RMSE:
+
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/1a11b5f1-5a62-47be-be21-ca45c3fe4d28" alt="Metrik RMSE" />
+
+Berdasarkan hasil analisis dari grafik diatas model mengalami konvergen setelah _epoch_ ke-8 dan nilai RMSE mendekati nol yang menandakan bahwa hasil _training_ dari model rekomendasi memiliki kinerja yang baik.
