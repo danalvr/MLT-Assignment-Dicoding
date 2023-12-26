@@ -1,4 +1,4 @@
-![image](https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/a26609c9-731f-49b6-b5a4-7695d417ec5a)# Laporan Proyek Machine Learning - Daniel Alvaro Sormin
+# Laporan Proyek Machine Learning - Daniel Alvaro Sormin
 
 ## Project Overview
 
@@ -31,7 +31,7 @@ Proyek ini dibangun agar memberikan gambaran kepada individu/perusahaan yang ing
 - Menerapkan sistem content-based filtering yang menggunakan analisis konten film, seperti genre, aktor, sutradara, dan plot, untuk memberikan rekomendasi. Ini memungkinkan sistem untuk memahami preferensi pengguna berdasarkan kesamaan dengan konten yang disukai sebelumnya.
 - Menerapkan metode collaborative filtering yang memanfaatkan informasi dari pengguna lain untuk memberikan rekomendasi. Sistem akan mempertimbangkan perilaku dan preferensi pengguna serupa untuk memprediksi film yang mungkin disukai.
 
-## Data Understanding & Preprocessing
+## Data Understanding
 
 Dataset yang digunakan pada project machine learning untuk membuat sistem rekomendasi film berasal dari [The Movies Dataset - Kaggle](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset). Adapun dataset yang digunakan yaitu credits.csv, movies.csv dan ratings_small.csv.
 
@@ -93,16 +93,25 @@ Teknik yang digunakan pada tahapan data understanding:
 - Variabel Description: Untuk memeriksa setiap variabel yang terdapat dalam dataset apakah terdapat nilai NaN, duplicate, dll.
 - Univariate Analysis: Untuk menganalisis setiap variabel secara terpisah dengan fokus pada distribusi nilai, statistik deskriptif, dan visualisasi.
 
-  Berikut merupakan hasil analisis categorical:
+Berikut merupakan hasil analisis categorical:
   
-  <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/05a5d35c-7872-44cd-8b80-dccf60b7618c" alt="gambar analisis kategori" />
+|       | budget       | id        | popularity | revenue       | runtime | vote_average | vote_count |
+|-------|--------------|-----------|------------|---------------|---------|--------------|------------|
+| count |      4803.00 |   4803.00 |    4803.00 |       4803.00 | 4801.00 |      4803.00 |    4803.00 |
+|  mean |  29045039.88 |  57165.48 |      21.49 |   82260638.65 |  106.88 |         6.09 |     690.22 |
+|  std  |  40722391.26 |  88694.61 |      31.82 |  162857100.94 |   22.61 |         1.19 |    1234.59 |
+|  min  |         0.00 |      5.00 |       0.00 |          0.00 |    0.00 |         0.00 |       0.00 |
+|  25%  |    790000.00 |   9014.50 |       4.67 |          0.00 |   94.00 |         5.60 |      54.00 |
+|  50%  |  15000000.00 |  14629.00 |      12.92 |   19170001.00 |  103.00 |         6.20 |     235.00 |
+|  75%  |  40000000.00 |  58610.50 |      28.31 |   92917187.00 |  118.00 |         6.80 |     737.00 |
+|  max  | 380000000.00 | 459488.00 |     875.58 | 2787965087.00 |  338.00 |        10.00 |   13752.00 |
 
 
-  Berikut merupakan hasil analisis numerical:
+  Berikut merupakan visualisasi analisis numerical:
   
-  <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/5d7aceee-164b-40bc-a41f-c9fe64451853" alt="gambar analisis numerik" />
+  <img width="600" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/5d7aceee-164b-40bc-a41f-c9fe64451853" alt="gambar analisis numerik" />
 
-Kemudian setelah melakukan analisis data menggunakan metode univariate analysis akan dilakukan tahapan data preprocessing dimana dataset credit.csv dan movie.csv akan digabung berdasarkan parameter movie_id pada dataset credit.
+Visual tersebut menampilkan data fitur _numerical_ untuk mempermudah dalam meilhat persebaran data yang ada. Dalam visual data tersebut kita berfokus pada fitur _vote average_, _popularity_ dan _vote count_ yang merupakan fitur yang relevan dengan sistem rekomendasi yang dibuat. Pada fitur _vote average_ populasi data terbanyak terdapat pada rentang nilai 4-8. Pada fitur _popularity_ persebaran data terbanyak dengan _value_ diatas 2500. Terakhir pada fitur _vote count_ jumlah data terbanyak lebih dari 2500.
 
 ## Data Preparation
 
@@ -144,7 +153,18 @@ _Content-based filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ y
 
 Berikut merupakan hasil rekomendasi film menggunakan teknik _content-based filtering_ yang memiliki kemiripan dengan _film_ "Batman":
 
-<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/64bfd03c-34b0-4ebd-9b42-1c4eb2a957a4" alt="Hasil rekomendasi film" />
+| id   | title                                   |
+|------|-----------------------------------------|
+| 65   | The Dark Knight                         |
+|  299 |                          Batman Forever |
+|  428 |                          Batman Returns |
+| 1359 |                                  Batman |
+| 3854 | Batman: The Dark Knight Returns, Part 2 |
+|  119 |                           Batman Begins |
+| 2507 |                               Slow Burn |
+|   9  |      Batman v Superman: Dawn of Justice |
+| 1181 |                                     JFK |
+| 210  | Batman & Robin                          |
 
 ### Collaborative Filtering
 
@@ -165,14 +185,25 @@ _Collaborative filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ b
 
 Berikut merupakan hasil rekomendasi _film_ dengan _userId_ yaitu 461:
 
-<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/34abbf64-a603-4dda-9d64-7d66004f7b64" alt="Hasil rekomendasi film" />
+| title                                            | ratings |
+|--------------------------------------------------|---------|
+| American History X                               |     8.2 |
+|                Batman Begins : 7.5               |     7.5 |
+|         Terminator 2: Judgment Day : 7.7         |     7.7 |
+|           Raiders of the Lost Ark : 7.7          |     7.7 |
+|               Apocalypse Now : 8.0               |     8.0 |
+| Pirates of the Caribbean: Dead Man's Chest : 7.0 |     7.0 |
+|             Mission: Impossible : 6.7            |     6.7 |
+|            Ice Age: The Meltdown : 6.5           |     6.5 |
+|               Horrible Bosses : 6.5              |     6.5 |
+| Terminator Salvation : 5.9                       |     5.9 |
 
 ## Evaluation
 
 Pada tahap _evaluation_ akan dilakukan analisis terhadap sistem rekomendasi yang dibuat dengan menggunakan teknik _content-based filtering_ dan _collaborative filtering_.
 
 ### _Content-Based Filtering_
-Evaluasi akan dilakukan dengan mencoba memasukkan _inputan_ sebuah _film_ berjudul "Avatar". Setelah itu sistem menampilkan list beberapa rekomendasi _film_ yang _relate_ dengan _film_ tersebut. Setelah melakukan analisis secara manual dengan mengecek _detail_ masing-masing dari _film_ tersebut sistem berhasil menampilkan rekomendasi _film_ yang relevan. Kemudian akan dihitung jumlah rekomendasi _film_ yang relevan menggunakan rumus _precision_. Hasilnya dari 3 _film_ sebanyak 3 _film_ menampilkan _film_ yang relevan dengan persentase sebesar 100%.
+Evaluasi akan dilakukan dengan mencoba memasukkan _inputan_ sebuah _film_ berjudul "Avatar". Setelah itu sistem menampilkan list beberapa rekomendasi _film_ yang relevan. Kemudian akan dihitung jumlah rekomendasi _film_ yang relevan menggunakan rumus _precision_. Rumus _precision_ akan mengukur seberapa akurat sistem dalam memberikan rekomendasi _film_ dengan menyatakan rasio _item_ relevan yang dihasilkan oleh sistem terhadap total _item_ yang dihasilkan. Berdasarkan percobaan dengan menginput judul _film_ "Avatar" sistem menampilkan 10 item _film_ yang relevan dengan menganalisis secara manual dengan cara mengecek _detail_ masing-masing dari _film_ tersebut. Hasil analisis manual tersebut yaitu sistem berhasil menampilkan rekomendasi _film_ yang relevan. Hal ini dibuktikan dari hasil _film_ 'Avatar' yang memiliki genre yang sama ataupun digarap oleh sutradara dengan film yang direkomendasikan oleh sistem.
 
 Berikut merupakan rumus dari _precision_:
 
@@ -180,7 +211,18 @@ Berikut merupakan rumus dari _precision_:
 
 Berikut merupakan hasil rekomendasi _film_ yang relevan dengan _film_ "Avatar":
 
-<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/b867ac85-a4ef-4010-922a-a7e116b4dec9" alt="Hasil rekomendasi film" />
+| id   | title                        |
+|------|------------------------------|
+| 3604 |                    Apollo 18 |
+| 2130 |                 The American |
+|  634 |                   The Matrix |
+| 1341 |         The Inhabited Island |
+|  529 |             Tears of the Sun |
+| 1610 |                        Hanna |
+|  311 | The Adventures of Pluto Nash |
+|  847 |                     Semi-Pro |
+|  775 |                    Supernova |
+| 2628 |          Blood and Chocolate |
 
 ### _Collaborative filtering_
 
