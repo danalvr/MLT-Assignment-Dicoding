@@ -113,9 +113,14 @@ Berikut merupakan hasil analisis categorical:
 
 Visual tersebut menampilkan data fitur _numerical_ untuk mempermudah dalam meilhat persebaran data yang ada. Dalam visual data tersebut kita berfokus pada fitur _vote average_, _popularity_ dan _vote count_ yang merupakan fitur yang relevan dengan sistem rekomendasi yang dibuat. Pada fitur _vote average_ populasi data terbanyak terdapat pada rentang nilai 4-8. Pada fitur _popularity_ persebaran data terbanyak dengan _value_ diatas 2500. Terakhir pada fitur _vote count_ jumlah data terbanyak lebih dari 2500.
 
+Berdasarkan analisis yang dilakukan terhadap fitur kategori dan numerik dapat disimpulkan data memiliki kualitas bagus karena tidak terdapat _outlier_. Namun, terdapat _missing value_ pada fitur _homepage_, _overview_, _release_date_, _runtime_, dan _tagline_ yang akan dijelaskan lebih rinci pada tahap _data preparation_.
+
 ## Data Preparation
 
-Pada tahap preparation dilakukan pengecekan dataset yang telah digabung sebelumnya. Setelah dilakukan pengecekan terhadap dataset terdapat beberapa missing value. Kemudian, missing value tersebut diganti dengan nilai string kosong.
+Dalam pembuatan sistem rekomendasi _film_ terdapat beberapa bagian dalam tahapan _data preparation_ yaitu _assessing variabel_ dan _demographic filtering_. _Assessing variabel_ digunakan untuk menjaga kualitas dataset yang akan digunakan dalam pembuatan sistem rekomendasi sedangkan _demographic filtering_ digunakan untuk memastikan fitur tersebut benar-benar penting dalam pembuatan sistem rekomendasi _film_. Berikut merupakan penjelasan secara rinci tahapan dari _assessing variabel_ dan _demographic filtering_.
+
+### Assessing Variabel
+Pada tahap _data preparation_ langkah awal yang dilakukan adalah pengecekan dataset yang telah digabung sebelumnya. Setelah dilakukan pengecekan terhadap dataset terdapat beberapa _missing value_ pada fitur _homepage_, _overview_, _release_date_, _runtime_, dan _tagline_. Namun, _missing value_ tersebut memiliki entri data yang banyak sehingga data tidak akan dihapus karena memiliki informasi yang penting. Setelah dilakukan pengecekan lebih lanjut solusi yang tepat adalah dengan mengganti nilai _missing value_ dengan nilai string kosong karena fitur tersebut tidak terlalu berpengaruh terhadap sistem rekomendasi.
 
 ### Demographic Filtering:
 
@@ -149,7 +154,7 @@ Kekurangan:
 - Ketergantungan pada Representasi Fitur: Kualitas rekomendasi sangat bergantung pada kualitas representasi fitur item dan profil pengguna.
 
 Implementasi:
-_Content-based filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ yang memiliki kesamaan fitur dengan parameter berupa _overview_, _cast_, _crew_, _keyword_, _tagline_, dsb. Misal, ketika _user_ sedang menonton atau sedang mencari sebuah _film_ maka sistem akan memberikan rekomendasi _film_ yang mirip dengan _film_ yang telah ditonton oleh _user_ ataupun yang sedang dicari oleh _user_ baik dari segi _genre_, _overview_ ataupun sutradara dari _film_ tersebut. Untuk implementasi teknik _content-based filtering_ langkah awal yang dilakukan adalah merepresentasikan fitur _overview_ menjadi sebuah matriks menggunakan metode TF-IDF dengan fungsi TfidfVectorizer dari _library_ sklearn__. Langkah selanjutnya yaitu menghitung derajat kesamaan antar film dengan menggunakan fungsi _cosine_similarity_ dari library sklearn. Selanjutnya akan dibuat sebuah fungsi _get_recommendation_ dengan parameter berupa _title_ dan nilai dari _cosine similarity_ untuk menampilkan rekomendasi _film_ yang memiliki kemiripan dengan _film_ yang telah ditonton atau yang sedang dicari.
+_Content-based filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ yang memiliki kesamaan fitur dengan parameter berupa _overview_, _cast_, _crew_, _keyword_, _tagline_, dsb. Misal, ketika _user_ sedang menonton atau sedang mencari sebuah _film_ maka sistem akan memberikan rekomendasi _film_ yang mirip dengan _film_ yang telah ditonton oleh _user_ ataupun yang sedang dicari oleh _user_ baik dari segi _genre_, _overview_ ataupun sutradara dari _film_ tersebut. Untuk implementasi teknik _content-based filtering_ langkah awal yang dilakukan adalah merepresentasikan fitur _overview_ menjadi sebuah matriks menggunakan metode TF-IDF dengan fungsi TfidfVectorizer dari _library_ sklearn__. Seperti yang diketahui TF-IDF (Term Frequency-Inverse Document Frequency) merupakan metode pemodelan yang digunakan untuk mengekstraksi fitur dari teks. Hasil dari _tfidf_matrix_ akan digunakan nantinya sebagai fitur masukan dalam sistem rekomendasi. Langkah selanjutnya yaitu menghitung derajat kesamaan antar film dengan menggunakan fungsi _cosine_similarity_ dari library sklearn. Selanjutnya akan dibuat sebuah fungsi _get_recommendation_ dengan parameter berupa _title_ dan nilai dari _cosine similarity_ untuk menampilkan rekomendasi _film_ yang memiliki kemiripan dengan _film_ yang telah ditonton atau yang sedang dicari.
 
 Berikut merupakan hasil rekomendasi film menggunakan teknik _content-based filtering_ yang memiliki kemiripan dengan _film_ "Batman":
 
@@ -166,6 +171,8 @@ Berikut merupakan hasil rekomendasi film menggunakan teknik _content-based filte
 | 1181 |                                     JFK |
 | 210  | Batman & Robin                          |
 
+Hasil rekomendasi _film_ tersebut diberikan oleh sistem berdasarkan kesamaan oleh paramater _overview_, genre, _keyword_, _director_ _cast_ dan _crew_.
+
 ### Collaborative Filtering
 
 Kelebihan:
@@ -181,22 +188,24 @@ Kekurangan:
 - Scalability: Kesulitan dalam skala besar karena memerlukan perhitungan yang kompleks untuk matriks kollaboratif, yang dapat menjadi tantangan pada dataset yang sangat besar.
 
 Implementasi:
-_Collaborative filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ berdasarkan informasi yang diberikan oleh _user_ lain. Dalam hal ini digunakan suatu pendekatan yaitu _user-based filtering_ untuk memberikan rekomendasi berupa _film_ berdasarkan kesamaan preferensi dengan _user_ lain.  Misal, _user_ A dan _user_ B menyukai beberapa film dengan genre yang sama. Jika _user_ A menyukai _film_ A maka sistem akan memberikan rekomendasi berupa _film_ A kepada _user_ B. Untuk implementasi teknik _collaborative filtering_ langkah awal yang dilakukan adalah melakukan _encoding_ pada fitur _userId_ dan _movieId_. Kemudian, hasil _encoding_ akan dipetakan pada variabel _ratings_df['user']_ dan _ratings_df['movie']_. Kemudian, dilakukan _split_ dataset menjadi data latih dan data uji dengan rasio 8:2. Kemudian, akan dibuat sebuah kelas _RecommenderNet_ dengan parameter _tf.keras.Model_ yang merupakan variabel bawaan yang diimport dari _framework_ TensorFlow. Kemudian, akan dibuat sebuah model dengan menginisiasi kelas _RecommenderNet_. Kemudian model akan di-_compile_. Kemudian akan ditraining dengan iterasi (_epochs_) sebanyak 10 kali.
+_Collaborative filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ berdasarkan informasi yang diberikan oleh _user_ lain. Dalam hal ini digunakan suatu pendekatan yaitu _user-based filtering_ untuk memberikan rekomendasi berupa _film_ berdasarkan kesamaan preferensi dengan _user_ lain.  Misal, _user_ A dan _user_ B menyukai beberapa _film_ dengan _genre_ yang sama. Jika _user_ A menyukai _film_ A maka sistem akan memberikan rekomendasi berupa _film_ A kepada _user_ B. Untuk implementasi teknik _collaborative filtering_ langkah awal yang dilakukan adalah melakukan _encoding_ pada fitur _userId_ dan _movieId_. Kemudian, hasil _encoding_ akan dipetakan pada variabel _ratings_df['user']_ dan _ratings_df['movie']_. Kemudian, dilakukan _split_ dataset menjadi data latih dan data uji dengan rasio 8:2. Kemudian, akan dibuat sebuah kelas _RecommenderNet_ dengan parameter _tf.keras.Model_ yang merupakan variabel bawaan yang diimport dari _framework_ TensorFlow. _Recommendernet_ merupakan implementasi dari model _deep learning_ yang memanfaatkan pembelajaran _embedding_ untuk menyandikan pengguna dan _item_ dalam representasi yang lebih kompak, dan kemudian memanfaatkan _dot product_ dan bias untuk menghasilkan prediksi. Kemudian, akan dibuat sebuah variabel model dengan menginisiasi kelas _RecommenderNet_. Kemudian model tersebut akan di-_compile_. Kemudian akan ditraining dengan iterasi (_epochs_) sebanyak 10 kali.
 
 Berikut merupakan hasil rekomendasi _film_ dengan _userId_ yaitu 461:
 
 | title                                            | ratings |
 |--------------------------------------------------|---------|
 | American History X                               |     8.2 |
-|                Batman Begins : 7.5               |     7.5 |
-|         Terminator 2: Judgment Day : 7.7         |     7.7 |
-|           Raiders of the Lost Ark : 7.7          |     7.7 |
-|               Apocalypse Now : 8.0               |     8.0 |
-| Pirates of the Caribbean: Dead Man's Chest : 7.0 |     7.0 |
-|             Mission: Impossible : 6.7            |     6.7 |
-|            Ice Age: The Meltdown : 6.5           |     6.5 |
-|               Horrible Bosses : 6.5              |     6.5 |
-| Terminator Salvation : 5.9                       |     5.9 |
+|                Batman Begins                     |     7.5 |
+|         Terminator 2: Judgment Day               |     7.7 |
+|           Raiders of the Lost Ark                |     7.7 |
+|               Apocalypse Now                     |     8.0 |
+| Pirates of the Caribbean: Dead Man's Chest       |     7.0 |
+|             Mission: Impossible                  |     6.7 |
+|            Ice Age: The Meltdown                 |     6.5 |
+|               Horrible Bosses                    |     6.5 |
+| Terminator Salvation                             |     5.9 |
+
+Hasil rekomendasi tersebut diberikan oleh sistem dikarenakan _userId_ 461 memberikan _rating_ yang tinggi terhadap beberapa _genre_ _film_ dimana _user_ lain juga memberikan _rating_ yang sama sehingga sistem memberikan rekomendasi _film_ berdasarkan _rating_ tinggi yang diberikan oleh user lain.
 
 ## Evaluation
 
@@ -237,3 +246,5 @@ Berikut merupakan hasil visualisasi data latih dan data uji menggunakan metrik R
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/1a11b5f1-5a62-47be-be21-ca45c3fe4d28" alt="Metrik RMSE" />
 
 Berdasarkan hasil analisis dari grafik diatas model mengalami konvergen setelah _epoch_ ke-8 dan nilai RMSE mendekati nol yang menandakan bahwa hasil _training_ dari model rekomendasi memiliki kinerja yang baik.
+
+Kesimpulan dari evaluasi yang dilakukan adalah sistem yang dibangun menggunakan teknik _content-based filtering_ dan _collaborative filtering_ dapat memberikan rekomendasi _film_ yang relevan dan dapat merespons secara akurat terhadap preferensi _film_ yang sangat beragam dari pengguna.
