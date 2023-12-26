@@ -2,38 +2,38 @@
 
 ## Project Overview
 
-Pembuatan proyek rekomendasi film menjadi semakin penting seiring dengan perkembangan pesat industri hiburan dan popularitas platform streaming. Saat ini, kita hidup di era di mana akses ke konten digital, termasuk film dan acara TV, semakin mudah dan melimpah. Sementara itu, jumlah judul yang tersedia di berbagai platform streaming seperti Netflix, Amazon Prime, dan Hulu terus meningkat. Dalam situasi di mana banyaknya pilihan bisa menjadi suatu tantangan, proyek rekomendasi film muncul sebagai solusi yang efektif untuk membantu pengguna menemukan konten yang sesuai dengan preferensi dan minat mereka.
+Pembuatan proyek rekomendasi _film_ menjadi semakin penting seiring dengan perkembangan pesat industri hiburan dan popularitas _platform_ _streaming_. Saat ini, kita hidup di era di mana akses ke konten digital, termasuk _film_ dan acara TV, semakin mudah dan melimpah. Sementara itu, jumlah judul yang tersedia di berbagai platform _streaming_ seperti Netflix, Amazon Prime, dan Hulu terus meningkat. Dalam situasi di mana banyaknya pilihan bisa menjadi suatu tantangan, proyek rekomendasi _film_ muncul sebagai solusi yang efektif untuk membantu pengguna menemukan konten yang sesuai dengan preferensi dan minat mereka.
 
-Rekomendasi film bukan hanya tentang menyajikan daftar film yang populer, tetapi juga tentang memahami preferensi individual pengguna. Pendekatan ini memanfaatkan kecerdasan buatan (AI) dan teknik-teknik machine learning untuk menganalisis pola perilaku pengguna, sejarah penontonannya, serta karakteristik film itu sendiri. Melalui penggunaan algoritma-algoritma yang canggih, seperti collaborative filtering atau content-based filtering, proyek rekomendasi film dapat memberikan saran yang personal dan relevan.
+Rekomendasi _film_ bukan hanya tentang menyajikan daftar _film_ yang populer, tetapi juga tentang memahami preferensi individual pengguna. Pendekatan ini memanfaatkan kecerdasan buatan (AI) dan teknik-teknik machine learning untuk menganalisis pola perilaku pengguna, sejarah penontonannya, serta karakteristik _film_ itu sendiri. Melalui penggunaan algoritma-algoritma yang canggih, seperti _collaborative filtering_ atau _content-based filtering_, proyek rekomendasi _film_ dapat memberikan saran yang personal dan relevan.
 
-Dari perspektif bisnis, memiliki sistem rekomendasi yang kuat dapat meningkatkan retensi pengguna, memperpanjang waktu penonton, dan memperkuat loyalitas terhadap platform. Ini juga memberikan manfaat bagi industri film secara keseluruhan dengan membantu film-film yang mungkin kurang dikenal mendapatkan eksposur lebih besar.
+Dari perspektif bisnis, memiliki sistem rekomendasi yang kuat dapat meningkatkan retensi pengguna, memperpanjang waktu penonton, dan memperkuat loyalitas terhadap platform. Ini juga memberikan manfaat bagi industri _film_ secara keseluruhan dengan membantu _film_-_film_ yang mungkin kurang dikenal mendapatkan eksposur lebih besar.
 
-Dengan pertumbuhan pesat data dan kecerdasan buatan, proyek rekomendasi film menjadi area yang menarik untuk dieksplorasi dan dikembangkan lebih lanjut. Melalui pendekatan ini, harapannya adalah bahwa pengguna dapat menemukan konten yang mereka nikmati tanpa harus menggali terlalu dalam ke dalam katalog yang semakin luas. Sebagai kontribusi pada tren transformasi digital dalam dunia hiburan, proyek ini tidak hanya menghadirkan solusi praktis tetapi juga memperkaya pengalaman menonton bagi penonton modern yang selalu mencari konten yang relevan dan menarik.
+Dengan pertumbuhan pesat data dan kecerdasan buatan, proyek rekomendasi _film_ menjadi area yang menarik untuk dieksplorasi dan dikembangkan lebih lanjut. Melalui pendekatan ini, harapannya adalah bahwa pengguna dapat menemukan konten yang mereka nikmati tanpa harus menggali terlalu dalam ke dalam katalog yang semakin luas. Sebagai kontribusi pada tren transformasi digital dalam dunia hiburan, proyek ini tidak hanya menghadirkan solusi praktis tetapi juga memperkaya pengalaman menonton bagi penonton modern yang selalu mencari konten yang relevan dan menarik.
 
 ## Business Understanding
 
-Proyek ini dibangun agar memberikan gambaran kepada individu/perusahaan yang ingin mengembangkan sistem rekomendasi film menggunakan teknik Content-Based Filtering dan Collaborative Filtering.
+Proyek ini dibangun agar memberikan gambaran kepada individu/perusahaan yang ingin mengembangkan sistem rekomendasi _film_ menggunakan teknik _Content-Based Filtering_ dan _Collaborative Filtering_.
 
 ### Problem Statements
 
-- Tantangan Keragaman Preferensi: Bagaimana mengatasi kesulitan dalam memahami dan memenuhi preferensi yang sangat beragam dari pengguna dalam sistem rekomendasi film? Contoh Kasus: Sebuah platform streaming film memiliki pengguna dari berbagai kelompok usia, latar belakang budaya, dan preferensi film yang sangat beragam. Seorang pengguna dapat menjadi penggemar film aksi Hollywood, sementara yang lain mungkin lebih tertarik pada film animasi Jepang atau drama Eropa. Tantangannya adalah bagaimana sistem rekomendasi dapat memahami dan memenuhi preferensi yang sangat beragam ini, sehingga setiap pengguna merasa sistem memberikan rekomendasi yang relevan dengan selera mereka.
-- Perubahan Dinamis dalam Tren Konten: Bagaimana membangun sistem rekomendasi yang dapat mengikuti perubahan dinamis dalam tren konten film dan tetap memberikan rekomendasi yang relevan? Contoh Kasus: Industri film terus berubah dengan cepat, dan tren konten bisa berubah dari waktu ke waktu. Misalnya, munculnya genre baru atau popularitas aktor tertentu yang sedang naik daun dapat mempengaruhi tren konten. Sistem rekomendasi harus dapat mendeteksi perubahan-perubahan ini dan secara dinamis memperbarui modelnya sehingga tetap memberikan rekomendasi yang relevan dengan tren konten terkini. Sebagai contoh, jika film-film superhero sedang naik daun, sistem harus dapat mengidentifikasi perubahan ini dan meningkatkan bobotnya pada jenis film tersebut.
-- Analisis Konten yang Mendalam: Bagaimana meningkatkan pemahaman sistem terhadap preferensi pengguna melalui analisis konten film secara mendalam? Contoh Kasus: Sebuah platform streaming ingin memberikan pengalaman yang lebih personal kepada pengguna dengan memahami lebih dalam elemen-elemen yang disukai atau tidak disukai dalam suatu film. Sebagai contoh, jika seorang pengguna menyukai film dengan pengembangan karakter yang kuat, twist plot yang tak terduga, dan sinematografi yang indah, sistem perlu menganalisis konten film secara mendalam. Ini bisa mencakup analisis dialog, pemahaman struktur naratif, dan evaluasi visual untuk menyampaikan rekomendasi yang lebih akurat berdasarkan preferensi spesifik pengguna tersebut.
+- Tantangan Keragaman Preferensi: Bagaimana mengatasi kesulitan dalam memahami dan memenuhi preferensi yang sangat beragam dari pengguna dalam sistem rekomendasi _film_? Contoh Kasus: Sebuah _platform streaming film_ memiliki pengguna dari berbagai kelompok usia, latar belakang budaya, dan preferensi _film_ yang sangat beragam. Seorang pengguna dapat menjadi penggemar _film_ aksi Hollywood, sementara yang lain mungkin lebih tertarik pada _film_ animasi Jepang atau drama Eropa. Tantangannya adalah bagaimana sistem rekomendasi dapat memahami dan memenuhi preferensi yang sangat beragam ini, sehingga setiap pengguna merasa sistem memberikan rekomendasi yang relevan dengan selera mereka.
+- Perubahan Dinamis dalam Tren Konten: Bagaimana membangun sistem rekomendasi yang dapat mengikuti perubahan dinamis dalam tren konten _film_ dan tetap memberikan rekomendasi yang relevan? Contoh Kasus: Industri _film_ terus berubah dengan cepat, dan tren konten bisa berubah dari waktu ke waktu. Misalnya, munculnya genre baru atau popularitas aktor tertentu yang sedang naik daun dapat mempengaruhi tren konten. Sistem rekomendasi harus dapat mendeteksi perubahan-perubahan ini dan secara dinamis memperbarui modelnya sehingga tetap memberikan rekomendasi yang relevan dengan tren konten terkini. Sebagai contoh, jika _film_-_film_ superhero sedang naik daun, sistem harus dapat mengidentifikasi perubahan ini dan meningkatkan bobotnya pada jenis _film_ tersebut.
+- Analisis Konten yang Mendalam: Bagaimana meningkatkan pemahaman sistem terhadap preferensi pengguna melalui analisis konten _film_ secara mendalam? Contoh Kasus: Sebuah platform streaming ingin memberikan pengalaman yang lebih personal kepada pengguna dengan memahami lebih dalam elemen-elemen yang disukai atau tidak disukai dalam suatu _film_. Sebagai contoh, jika seorang pengguna menyukai _film_ dengan pengembangan karakter yang kuat, twist plot yang tak terduga, dan sinematografi yang indah, sistem perlu menganalisis konten _film_ secara mendalam. Ini bisa mencakup analisis dialog, pemahaman struktur naratif, dan evaluasi visual untuk menyampaikan rekomendasi yang lebih akurat berdasarkan preferensi spesifik pengguna tersebut.
 
 ### Goals
 
-- Mengembangkan sistem rekomendasi yang mampu memahami dan merespons secara akurat terhadap preferensi film yang sangat beragam dari pengguna.
-- Membangun model rekomendasi yang dapat secara dinamis menyesuaikan diri dengan perubahan tren konten film dan tetap relevan.
-- Meningkatkan analisis konten film agar sistem dapat lebih memahami elemen-elemen yang disukai oleh pengguna.
+- Mengembangkan sistem rekomendasi yang mampu memahami dan merespons secara akurat terhadap preferensi _film_ yang sangat beragam dari pengguna.
+- Membangun model rekomendasi yang dapat secara dinamis menyesuaikan diri dengan perubahan tren konten _film_ dan tetap relevan.
+- Meningkatkan analisis konten _film_ agar sistem dapat lebih memahami elemen-elemen yang disukai oleh pengguna.
 
 ### Solution statements
 
-- Menerapkan sistem content-based filtering yang menggunakan analisis konten film, seperti genre, aktor, sutradara, dan plot, untuk memberikan rekomendasi. Ini memungkinkan sistem untuk memahami preferensi pengguna berdasarkan kesamaan dengan konten yang disukai sebelumnya.
-- Menerapkan metode collaborative filtering yang memanfaatkan informasi dari pengguna lain untuk memberikan rekomendasi. Sistem akan mempertimbangkan perilaku dan preferensi pengguna serupa untuk memprediksi film yang mungkin disukai.
+- Menerapkan sistem _content-based filtering_ yang menggunakan analisis konten _film_, seperti genre, aktor, sutradara, dan plot, untuk memberikan rekomendasi. Ini memungkinkan sistem untuk memahami preferensi pengguna berdasarkan kesamaan dengan konten yang disukai sebelumnya.
+- Menerapkan metode _collaborative filtering_ yang memanfaatkan informasi dari pengguna lain untuk memberikan rekomendasi. Sistem akan mempertimbangkan perilaku dan preferensi pengguna serupa untuk memprediksi _film_ yang mungkin disukai.
 
 ## Data Understanding
 
-Dataset yang digunakan pada project machine learning untuk membuat sistem rekomendasi film berasal dari [The Movies Dataset - Kaggle](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset). Adapun dataset yang digunakan yaitu credits.csv, movies.csv dan ratings_small.csv.
+Dataset yang digunakan pada project _machine learning_ untuk membuat sistem rekomendasi _film_ berasal dari [The Movies Dataset - Kaggle](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset). Adapun dataset yang digunakan yaitu credits.csv, movies.csv dan ratings_small.csv.
 
 Berikut merupakan informasi detail pada dataset:
 
@@ -50,50 +50,50 @@ Berikut merupakan informasi detail pada dataset:
    - Dataset memiliki 100004 sampel dengan 4 fitur
    - Dataset memiliki 3 fitur bertipe integer dan 1 fitur bertipe float
 
-Variabel-variabel pada The Movies Dataset adalah sebagai berikut:
+Variabel-variabel pada "The Movies Dataset" adalah sebagai berikut:
 
-1. Dataset credit
+1. Dataset _credit_
 
-   - movie_id: Identifier unik untuk setiap film dalam dataset.
-   - title: Judul film.
-   - cast: Informasi tentang pemeran dalam film, mungkin berupa daftar nama pemeran.
-   - crew: Informasi tentang kru produksi film, seperti sutradara, penulis, dan anggota staf lainnya.
+   - movie_id: Identifier unik untuk setiap _film_ dalam dataset.
+   - title: Judul _film_.
+   - cast: Informasi tentang pemeran dalam _film_, mungkin berupa daftar nama pemeran.
+   - crew: Informasi tentang kru produksi _film_, seperti sutradara, penulis, dan anggota staf lainnya.
 
-2. Dataset movies
+2. Dataset _movies_
 
-   - budget: Anggaran produksi film.
-   - genres: Genre atau kategori film, bisa berupa beberapa genre.
-   - homepage: URL halaman utama atau situs web film.
-   - id: Identifier unik untuk setiap film dalam dataset.
-   - keywords: Kata kunci atau istilah terkait film.
-   - original_language: Bahasa asli film.
-   - original_title: Judul asli film (dalam bahasa asli).
-   - overview: Ringkasan atau deskripsi singkat tentang film.
-   - popularity: Tingkat popularitas film, mungkin berdasarkan sejumlah faktor.
-   - production_companies: Perusahaan-perusahaan yang terlibat dalam produksi film.
-   - production_countries: Negara-negara di mana film diproduksi atau disyut.
-   - release_date: Tanggal rilis film.
-   - revenue: Pendapatan kotor atau hasil keuangan dari film.
-   - runtime: Durasi atau lama film.
-   - spoken_languages: Bahasa-bahasa yang digunakan dalam film.
-   - status: Status produksi film (misalnya, "Released").
-   - tagline: Frasa atau kalimat pemasaran yang mencirikan film.
-   - title: Judul film.
+   - budget: Anggaran produksi _film_.
+   - genres: Genre atau kategori _film_, bisa berupa beberapa genre.
+   - homepage: URL halaman utama atau situs web _film_.
+   - id: Identifier unik untuk setiap _film_ dalam dataset.
+   - keywords: Kata kunci atau istilah terkait _film_.
+   - original_language: Bahasa asli _film_.
+   - original_title: Judul asli _film_ (dalam bahasa asli).
+   - overview: Ringkasan atau deskripsi singkat tentang _film_.
+   - popularity: Tingkat popularitas _film_, mungkin berdasarkan sejumlah faktor.
+   - production_companies: Perusahaan-perusahaan yang terlibat dalam produksi _film_.
+   - production_countries: Negara-negara di mana _film_ diproduksi atau disyut.
+   - release_date: Tanggal rilis _film_.
+   - revenue: Pendapatan kotor atau hasil keuangan dari _film_.
+   - runtime: Durasi atau lama _film_.
+   - spoken_languages: Bahasa-bahasa yang digunakan dalam _film_.
+   - status: Status produksi _film_ (misalnya, "Released").
+   - tagline: Frasa atau kalimat pemasaran yang mencirikan _film_.
+   - title: Judul _film_.
    - vote_average: Rata-rata peringkat atau nilai yang diberikan oleh penonton.
    - vote_count: Jumlah total peringkat yang diberikan oleh penonton.
 
-3. Dataset ratings_small
-   - userId: Identifier unik untuk setiap pengguna.
-   - movieId: Identifier unik untuk setiap film.
-   - rating: Peringkat yang diberikan oleh pengguna untuk suatu film.
+3. Dataset _ratings_small_
+   - userId: _Identifier_ unik untuk setiap pengguna.
+   - movieId: _Identifier_ unik untuk setiap _film_.
+   - rating: Peringkat yang diberikan oleh pengguna untuk suatu _film_.
    - timestamp: Waktu ketika peringkat diberikan, mungkin dalam format timestamp.
 
-Teknik yang digunakan pada tahapan data understanding:
+Teknik yang digunakan pada tahapan data _understanding_:
 
-- Variabel Description: Untuk memeriksa setiap variabel yang terdapat dalam dataset apakah terdapat nilai NaN, duplicate, dll.
-- Univariate Analysis: Untuk menganalisis setiap variabel secara terpisah dengan fokus pada distribusi nilai, statistik deskriptif, dan visualisasi.
+- Variabel _Description_: Untuk memeriksa setiap variabel yang terdapat dalam dataset apakah terdapat nilai NaN, duplicate, dll.
+- _Univariate Analysis_: Untuk menganalisis setiap variabel secara terpisah dengan fokus pada distribusi nilai, statistik deskriptif, dan visualisasi.
 
-Berikut merupakan hasil analisis categorical:
+Berikut merupakan hasil analisis _categorical_:
   
 |       | budget       | id        | popularity | revenue       | runtime | vote_average | vote_count |
 |-------|--------------|-----------|------------|---------------|---------|--------------|------------|
@@ -107,7 +107,7 @@ Berikut merupakan hasil analisis categorical:
 |  max  | 380000000.00 | 459488.00 |     875.58 | 2787965087.00 |  338.00 |        10.00 |   13752.00 |
 
 
-  Berikut merupakan visualisasi analisis numerical:
+  Berikut merupakan visualisasi analisis _numerical_:
   
   <img width="600" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/5d7aceee-164b-40bc-a41f-c9fe64451853" alt="gambar analisis numerik" />
 
@@ -124,26 +124,26 @@ Pada tahap _data preparation_ langkah awal yang dilakukan adalah pengecekan data
 
 ### Demographic Filtering:
 
-Pada bagian demographic filtering akan dilakukan pemetaan terhadap dataset dengan membuat sebuah fitur baru bernama score. Fitur score tersebut akan digunakan sebagai parameter sistem rekomendasi yang akan dikalkulasikan untuk melihat kesamaan data film pada teknik content-based filtering. Berikut merupakan rumus yang digunakan untuk menghitung WR atau fitur score: 
+Pada bagian _demographic filtering_ akan dilakukan pemetaan terhadap dataset dengan membuat sebuah fitur baru bernama _score_. Fitur _score_ tersebut akan digunakan sebagai parameter sistem rekomendasi yang akan dikalkulasikan untuk melihat kesamaan data _film_ pada teknik _content-based filtering_. Berikut merupakan rumus yang digunakan untuk menghitung WR atau fitur _score_: 
 
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/c2e5a6df-9a2e-4e29-ade5-65e9c810298a" alt="gambar rumus WR" />
 
 Keterangan:
 
-- v adalah jumlah vote untuk film tersebut
+- v adalah jumlah vote untuk _film_ tersebut
 - m adalah jumlah vote minimum yang diperlukan untuk dicantumkan dalam bagan
-- R adalah total rata-rata vote film
+- R adalah total rata-rata vote _film_
 - C adalah rata-rata vote di seluruh laporan
 
 ## Modeling
 
-Membuat sistem rekomendasi dengan mengimplementasikan teknik content-based filtering dan collaborative filtering. Adapun kelebihan dari teknik yang digunakan adalah sebagai berikut:
+Membuat sistem rekomendasi dengan mengimplementasikan teknik _content-based filtering_ dan _collaborative filtering_. Adapun kelebihan dari teknik yang digunakan adalah sebagai berikut:
 
 ### Content-based Filtering
 
 Kelebihan:
 
-- Personalisasi yang Baik: Content-based filtering dapat memberikan rekomendasi yang sangat personal karena didasarkan pada preferensi dan karakteristik pengguna yang sudah diketahui.
+- Personalisasi yang Baik: _Content-based filtering_ dapat memberikan rekomendasi yang sangat personal karena didasarkan pada preferensi dan karakteristik pengguna yang sudah diketahui.
 - Sensitivitas terhadap Perubahan: Model cenderung stabil terhadap perubahan dalam perilaku pengguna karena bergantung pada konten atau fitur item yang jarang berubah.
 - Interpretabilitas Tinggi: Model ini cenderung lebih mudah diinterpretasikan karena rekomendasi didasarkan pada fitur-fitur yang dapat dimengerti dan dijelaskan.
 
@@ -154,9 +154,9 @@ Kekurangan:
 - Ketergantungan pada Representasi Fitur: Kualitas rekomendasi sangat bergantung pada kualitas representasi fitur item dan profil pengguna.
 
 Implementasi:
-_Content-based filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ yang memiliki kesamaan fitur dengan parameter berupa _overview_, _cast_, _crew_, _keyword_, _tagline_, dsb. Misal, ketika _user_ sedang menonton atau sedang mencari sebuah _film_ maka sistem akan memberikan rekomendasi _film_ yang mirip dengan _film_ yang telah ditonton oleh _user_ ataupun yang sedang dicari oleh _user_ baik dari segi _genre_, _overview_ ataupun sutradara dari _film_ tersebut. Untuk implementasi teknik _content-based filtering_ langkah awal yang dilakukan adalah merepresentasikan fitur _overview_ menjadi sebuah matriks menggunakan metode TF-IDF dengan fungsi TfidfVectorizer dari _library_ sklearn__. Seperti yang diketahui TF-IDF (Term Frequency-Inverse Document Frequency) merupakan metode pemodelan yang digunakan untuk mengekstraksi fitur dari teks. Hasil dari _tfidf_matrix_ akan digunakan nantinya sebagai fitur masukan dalam sistem rekomendasi. Langkah selanjutnya yaitu menghitung derajat kesamaan antar film dengan menggunakan fungsi _cosine_similarity_ dari library sklearn. Selanjutnya akan dibuat sebuah fungsi _get_recommendation_ dengan parameter berupa _title_ dan nilai dari _cosine similarity_ untuk menampilkan rekomendasi _film_ yang memiliki kemiripan dengan _film_ yang telah ditonton atau yang sedang dicari.
+_Content-based filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ yang memiliki kesamaan fitur dengan parameter berupa _overview_, _cast_, _crew_, _keyword_, _tagline_, dsb. Misal, ketika _user_ sedang menonton atau sedang mencari sebuah _film_ maka sistem akan memberikan rekomendasi _film_ yang mirip dengan _film_ yang telah ditonton oleh _user_ ataupun yang sedang dicari oleh _user_ baik dari segi _genre_, _overview_ ataupun sutradara dari _film_ tersebut. Untuk implementasi teknik _content-based filtering_ langkah awal yang dilakukan adalah merepresentasikan fitur _overview_ menjadi sebuah matriks menggunakan metode TF-IDF dengan fungsi TfidfVectorizer dari _library_ sklearn__. Seperti yang diketahui TF-IDF (Term Frequency-Inverse Document Frequency) merupakan metode pemodelan yang digunakan untuk mengekstraksi fitur dari teks. Hasil dari _tfidf_matrix_ akan digunakan nantinya sebagai fitur masukan dalam sistem rekomendasi. Langkah selanjutnya yaitu menghitung derajat kesamaan antar _film_ dengan menggunakan fungsi _cosine_similarity_ dari library sklearn. Selanjutnya akan dibuat sebuah fungsi _get_recommendation_ dengan parameter berupa _title_ dan nilai dari _cosine similarity_ untuk menampilkan rekomendasi _film_ yang memiliki kemiripan dengan _film_ yang telah ditonton atau yang sedang dicari.
 
-Berikut merupakan hasil rekomendasi film menggunakan teknik _content-based filtering_ yang memiliki kemiripan dengan _film_ "Batman":
+Berikut merupakan hasil rekomendasi _film_ menggunakan teknik _content-based filtering_ yang memiliki kemiripan dengan _film_ "Batman":
 
 | id   | title                                   |
 |------|-----------------------------------------|
@@ -183,9 +183,9 @@ Kelebihan:
 
 Kekurangan:
 
-- Cold Start Problem: Rentan terhadap Cold Start Problem karena membutuhkan data interaksi yang cukup sebelum dapat memberikan rekomendasi yang akurat.
-- Sparsity: Jika dataset sangat besar, bisa terjadi sparsity, di mana sebagian besar pengguna hanya berinteraksi dengan sebagian kecil item, membuat model sulit memberikan rekomendasi yang baik.
-- Scalability: Kesulitan dalam skala besar karena memerlukan perhitungan yang kompleks untuk matriks kollaboratif, yang dapat menjadi tantangan pada dataset yang sangat besar.
+- _Cold Start Problem_: Rentan terhadap Cold Start Problem karena membutuhkan data interaksi yang cukup sebelum dapat memberikan rekomendasi yang akurat.
+- _Sparsity_: Jika dataset sangat besar, bisa terjadi sparsity, di mana sebagian besar pengguna hanya berinteraksi dengan sebagian kecil item, membuat model sulit memberikan rekomendasi yang baik.
+- _Scalability_: Kesulitan dalam skala besar karena memerlukan perhitungan yang kompleks untuk matriks kollaboratif, yang dapat menjadi tantangan pada dataset yang sangat besar.
 
 Implementasi:
 _Collaborative filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ berdasarkan informasi yang diberikan oleh _user_ lain. Dalam hal ini digunakan suatu pendekatan yaitu _user-based filtering_ untuk memberikan rekomendasi berupa _film_ berdasarkan kesamaan preferensi dengan _user_ lain.  Misal, _user_ A dan _user_ B menyukai beberapa _film_ dengan _genre_ yang sama. Jika _user_ A menyukai _film_ A maka sistem akan memberikan rekomendasi berupa _film_ A kepada _user_ B. Untuk implementasi teknik _collaborative filtering_ langkah awal yang dilakukan adalah melakukan _encoding_ pada fitur _userId_ dan _movieId_. Kemudian, hasil _encoding_ akan dipetakan pada variabel _ratings_df['user']_ dan _ratings_df['movie']_. Kemudian, dilakukan _split_ dataset menjadi data latih dan data uji dengan rasio 8:2. Kemudian, akan dibuat sebuah kelas _RecommenderNet_ dengan parameter _tf.keras.Model_ yang merupakan variabel bawaan yang diimport dari _framework_ TensorFlow. _Recommendernet_ merupakan implementasi dari model _deep learning_ yang memanfaatkan pembelajaran _embedding_ untuk menyandikan pengguna dan _item_ dalam representasi yang lebih kompak, dan kemudian memanfaatkan _dot product_ dan bias untuk menghasilkan prediksi. Kemudian, akan dibuat sebuah variabel model dengan menginisiasi kelas _RecommenderNet_. Kemudian model tersebut akan di-_compile_. Kemudian akan ditraining dengan iterasi (_epochs_) sebanyak 10 kali.
@@ -212,11 +212,11 @@ Hasil rekomendasi tersebut diberikan oleh sistem dikarenakan _userId_ 461 member
 Pada tahap _evaluation_ akan dilakukan analisis terhadap sistem rekomendasi yang dibuat dengan menggunakan teknik _content-based filtering_ dan _collaborative filtering_.
 
 ### _Content-Based Filtering_
-Evaluasi akan dilakukan dengan mencoba memasukkan _inputan_ sebuah _film_ berjudul "Avatar". Setelah itu sistem menampilkan list beberapa rekomendasi _film_ yang relevan. Kemudian akan dihitung jumlah rekomendasi _film_ yang relevan menggunakan rumus _precision_. Rumus _precision_ akan mengukur seberapa akurat sistem dalam memberikan rekomendasi _film_ dengan menyatakan rasio _item_ relevan yang dihasilkan oleh sistem terhadap total _item_ yang dihasilkan. Berdasarkan percobaan dengan menginput judul _film_ "Avatar" sistem menampilkan 10 item _film_ yang relevan dengan menganalisis secara manual dengan cara mengecek _detail_ masing-masing dari _film_ tersebut. Hasil analisis manual tersebut yaitu sistem berhasil menampilkan rekomendasi _film_ yang relevan. Hal ini dibuktikan dari hasil _film_ 'Avatar' yang memiliki genre yang sama ataupun digarap oleh sutradara dengan film yang direkomendasikan oleh sistem.
+Evaluasi akan dilakukan dengan mencoba memasukkan _inputan_ sebuah _film_ berjudul "Avatar". Setelah itu sistem menampilkan list beberapa rekomendasi _film_ yang relevan. Kemudian akan dihitung jumlah rekomendasi _film_ yang relevan menggunakan rumus _precision_. Rumus _precision_ akan mengukur seberapa akurat sistem dalam memberikan rekomendasi _film_ dengan menyatakan rasio _item_ relevan yang dihasilkan oleh sistem terhadap total _item_ yang dihasilkan. Berdasarkan percobaan dengan menginput judul _film_ "Avatar" sistem menampilkan 10 item _film_ yang relevan dengan menganalisis secara manual dengan cara mengecek _detail_ masing-masing dari _film_ tersebut. Hasil analisis manual tersebut yaitu sistem berhasil menampilkan rekomendasi _film_ yang relevan. Hal ini dibuktikan dari hasil _film_ 'Avatar' yang memiliki genre yang sama ataupun digarap oleh sutradara dengan _film_ yang direkomendasikan oleh sistem.
 
 Berikut merupakan rumus dari _precision_:
 
-<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/38bf2d9a-dec7-4121-95cd-983e628c10e1" alt="Hasil rekomendasi film" />
+<img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/38bf2d9a-dec7-4121-95cd-983e628c10e1" alt="Hasil rekomendasi _film_" />
 
 Berikut merupakan hasil rekomendasi _film_ yang relevan dengan _film_ "Avatar":
 
