@@ -93,7 +93,7 @@ Teknik yang digunakan pada tahapan data _understanding_:
 - Variabel _Description_: Untuk memeriksa setiap variabel yang terdapat dalam dataset apakah terdapat nilai NaN, duplicate, dll.
 - _Univariate Analysis_: Untuk menganalisis setiap variabel secara terpisah dengan fokus pada distribusi nilai, statistik deskriptif, dan visualisasi.
 
-Berikut merupakan hasil analisis _categorical_:
+Tabel 1. Analisis fitur _categorical_
   
 |       | budget       | id        | popularity | revenue       | runtime | vote_average | vote_count |
 |-------|--------------|-----------|------------|---------------|---------|--------------|------------|
@@ -111,7 +111,9 @@ Berikut merupakan hasil analisis _categorical_:
   
   <img width="600" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/5d7aceee-164b-40bc-a41f-c9fe64451853" alt="gambar analisis numerik" />
 
-Visual tersebut menampilkan data fitur _numerical_ untuk mempermudah dalam meilhat persebaran data yang ada. Dalam visual data tersebut kita berfokus pada fitur _vote average_, _popularity_ dan _vote count_ yang merupakan fitur yang relevan dengan sistem rekomendasi yang dibuat. Pada fitur _vote average_ populasi data terbanyak terdapat pada rentang nilai 4-8. Pada fitur _popularity_ persebaran data terbanyak dengan _value_ diatas 2500. Terakhir pada fitur _vote count_ jumlah data terbanyak lebih dari 2500.
+  Gambar 1. Visualiasi analisis numerical
+
+Visual tersebut menampilkan data fitur _numerical_ untuk mempermudah dalam meilhat persebaran data yang ada. Dalam visual data tersebut kita berfokus pada fitur _vote average_, _popularity_ dan _vote count_ yang merupakan fitur yang relevan dengan sistem rekomendasi yang dibuat. Pada fitur _vote average_ populasi data terbanyak terdapat pada rentang nilai 6-8. Pada fitur _popularity_ persebaran data terbanyak dengan _value_ diatas 2500. Terakhir pada fitur _vote count_ jumlah data terbanyak lebih dari 2500. Analisis lebih mendalam menunjukkan bahwa rentang nilai 6-8 pada fitur _vote average_ mengindikasikan bahwa sebagian besar _film_ memiliki penilaian yang positif dari pengguna, tetapi belum tentu mendapatkan popularitas yang tinggi. Terkait persebaran data _popularity_ di atas 2500, ini dapat diartikan bahwa sebagian besar _film_ dalam dataset memiliki tingkat popularitas yang relatif tinggi, mungkin karena telah mendapatkan perhatian luas dari penonton. Sementara itu, jumlah data terbanyak pada fitur _vote count_ yang lebih dari 2500 menunjukkan bahwa sejumlah besar _film_ dalam dataset memiliki jumlah pemilih atau pengulas yang signifikan.
 
 Berdasarkan analisis yang dilakukan terhadap fitur kategori dan numerik dapat disimpulkan data memiliki kualitas bagus karena tidak terdapat _outlier_. Namun, terdapat _missing value_ pada fitur _homepage_, _overview_, _release_date_, _runtime_, dan _tagline_ yang akan dijelaskan lebih rinci pada tahap _data preparation_.
 
@@ -127,6 +129,8 @@ Pada tahap _data preparation_ langkah awal yang dilakukan adalah pengecekan data
 Pada bagian _demographic filtering_ akan dilakukan pemetaan terhadap dataset dengan membuat sebuah fitur baru bernama _score_. Fitur _score_ tersebut akan digunakan sebagai parameter sistem rekomendasi yang akan dikalkulasikan untuk melihat kesamaan data _film_ pada teknik _content-based filtering_. Berikut merupakan rumus yang digunakan untuk menghitung WR atau fitur _score_: 
 
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/c2e5a6df-9a2e-4e29-ade5-65e9c810298a" alt="gambar rumus WR" />
+
+Gambar 2. Rumus menghitung fitur _score_
 
 Keterangan:
 
@@ -157,6 +161,8 @@ Implementasi:
 _Content-based filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ yang memiliki kesamaan fitur dengan parameter berupa _overview_, _cast_, _crew_, _keyword_, _tagline_, dsb. Misal, ketika _user_ sedang menonton atau sedang mencari sebuah _film_ maka sistem akan memberikan rekomendasi _film_ yang mirip dengan _film_ yang telah ditonton oleh _user_ ataupun yang sedang dicari oleh _user_ baik dari segi _genre_, _overview_ ataupun sutradara dari _film_ tersebut. Untuk implementasi teknik _content-based filtering_ langkah awal yang dilakukan adalah merepresentasikan fitur _overview_ menjadi sebuah matriks menggunakan metode TF-IDF dengan fungsi TfidfVectorizer dari _library_ sklearn__. Seperti yang diketahui TF-IDF (Term Frequency-Inverse Document Frequency) merupakan metode pemodelan yang digunakan untuk mengekstraksi fitur dari teks. Hasil dari _tfidf_matrix_ akan digunakan nantinya sebagai fitur masukan dalam sistem rekomendasi. Langkah selanjutnya yaitu menghitung derajat kesamaan antar _film_ dengan menggunakan fungsi _cosine_similarity_ dari library sklearn. Selanjutnya akan dibuat sebuah fungsi _get_recommendation_ dengan parameter berupa _title_ dan nilai dari _cosine similarity_ untuk menampilkan rekomendasi _film_ yang memiliki kemiripan dengan _film_ yang telah ditonton atau yang sedang dicari.
 
 Berikut merupakan hasil rekomendasi _film_ menggunakan teknik _content-based filtering_ yang memiliki kemiripan dengan _film_ "Batman":
+
+Tabel 2. Hasil rekomendasi _film_ dengan _content-based filtering_
 
 | id   | title                                   |
 |------|-----------------------------------------|
@@ -192,6 +198,8 @@ _Collaborative filtering_ digunakan untuk memberikan sebuah rekomendasi _film_ b
 
 Berikut merupakan hasil rekomendasi _film_ dengan _userId_ yaitu 461:
 
+Tabel 3. Hasil rekomendasi _film_ dengan _collaborative filtering_ pada _userId_ 461
+
 | title                                            | ratings |
 |--------------------------------------------------|---------|
 | American History X                               |     8.2 |
@@ -212,26 +220,32 @@ Hasil rekomendasi tersebut diberikan oleh sistem dikarenakan _userId_ 461 member
 Pada tahap _evaluation_ akan dilakukan analisis terhadap sistem rekomendasi yang dibuat dengan menggunakan teknik _content-based filtering_ dan _collaborative filtering_.
 
 ### _Content-Based Filtering_
-Evaluasi akan dilakukan dengan mencoba memasukkan _inputan_ sebuah _film_ berjudul "Avatar". Setelah itu sistem menampilkan list beberapa rekomendasi _film_ yang relevan. Kemudian akan dihitung jumlah rekomendasi _film_ yang relevan menggunakan rumus _precision_. Rumus _precision_ akan mengukur seberapa akurat sistem dalam memberikan rekomendasi _film_ dengan menyatakan rasio _item_ relevan yang dihasilkan oleh sistem terhadap total _item_ yang dihasilkan. Berdasarkan percobaan dengan menginput judul _film_ "Avatar" sistem menampilkan 10 item _film_ yang relevan dengan menganalisis secara manual dengan cara mengecek _detail_ masing-masing dari _film_ tersebut. Hasil analisis manual tersebut yaitu sistem berhasil menampilkan rekomendasi _film_ yang relevan. Hal ini dibuktikan dari hasil _film_ 'Avatar' yang memiliki genre yang sama ataupun digarap oleh sutradara dengan _film_ yang direkomendasikan oleh sistem.
+Evaluasi akan dilakukan dengan mencoba memasukkan _inputan_ sebuah _film_ berjudul "Avatar". Setelah itu sistem menampilkan list beberapa rekomendasi _film_ yang relevan. Kemudian akan dihitung jumlah rekomendasi _film_ yang relevan menggunakan rumus _precision_. Rumus _precision_ akan mengukur seberapa akurat sistem dalam memberikan rekomendasi _film_ dengan menyatakan rasio _item_ relevan yang dihasilkan oleh sistem terhadap total _item_ yang dihasilkan. Berdasarkan percobaan dengan menginput judul _film_ "Avatar" sistem menampilkan 10 item _film_ yang relevan dengan menganalisis secara manual dengan cara mengecek _detail_ masing-masing dari _film_ tersebut. Hasil analisis manual tersebut yaitu sistem berhasil menampilkan rekomendasi _film_ yang relevan. Hal ini dibuktikan dari hasil _film_ 'Avatar' yang memiliki genre yang sama dengan yang direkomendasikan oleh sistem.
 
 Berikut merupakan rumus dari _precision_:
 
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/38bf2d9a-dec7-4121-95cd-983e628c10e1" alt="Hasil rekomendasi _film_" />
 
+Gambar 3. Rumus _precision_
+
 Berikut merupakan hasil rekomendasi _film_ yang relevan dengan _film_ "Avatar":
 
-| id   | title                        |
-|------|------------------------------|
-| 3604 |                    Apollo 18 |
-| 2130 |                 The American |
-|  634 |                   The Matrix |
-| 1341 |         The Inhabited Island |
-|  529 |             Tears of the Sun |
-| 1610 |                        Hanna |
-|  311 | The Adventures of Pluto Nash |
-|  847 |                     Semi-Pro |
-|  775 |                    Supernova |
-| 2628 |          Blood and Chocolate |
+Tabel 4. Hasil rekomendasi _film_ relevan dengan film "Avatar"  menggunakan _collaborative filtering_
+
+| id   | title                        | genres                             |
+|------|------------------------------|------------------------------------|
+| 3604 |                    Apollo 18 | [horror, thriller, sciencefiction] |
+| 2130 |                 The American |           [crime, drama, thriller] |
+|  634 |                   The Matrix |           [action, sciencefiction] |
+| 1341 |         The Inhabited Island |  [action, fantasy, sciencefiction] |
+|  529 |             Tears of the Sun |               [action, drama, war] |
+| 1610 |                        Hanna |      [action, thriller, adventure] |
+|  311 | The Adventures of Pluto Nash |   [action, comedy, sciencefiction] |
+|  847 |                     Semi-Pro |                           [comedy] |
+|  775 |                    Supernova | [horror, sciencefiction, thriller] |
+| 2628 |          Blood and Chocolate |           [drama, fantasy, horror] |
+
+Seperti yang diketahui bahwa _film_ "Avatar" memiliki genre [action, adventure, fantasy]. Berdasarkan tabel berikut terdapat 6 _film_ yang direkomendasikan memiliki kesamaan genre dengan _film_ "Avatar" yaitu, _film_ "The Matrix", "The Inhabitated Island", "Tears of The Sun", "Hanna", "The Adventures of Pluto Nash" dan "Blood and Chocolate". Artinya tingkat akurasi sistem yang ditinjau dari fitur genre mencapai 60% yang mana hasil ini menunjukkan bahwa sistem telah bekerja dengan baik dalam memberikan rekomendasi _film_. 
 
 ### _Collaborative filtering_
 
@@ -241,10 +255,31 @@ Berikut merupakan rumus RMSE:
 
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/454904ca-65f8-4c92-b1ba-eea865ca2b56" alt="Metrik RMSE" />
 
+Gambar 4. Rumus RMSE
+
+Berikut merupakan nilai hasil Metrik RMSE pada data latih dan data uji:
+
+Tabel 5. Hasil data latih dan data uji model _collaborative filtering_ menggunakan metrik RMSE
+
+| epochs | data latih | data uji |
+|--------|------------|----------|
+|    1   |     0.2281 |   0.2112 |
+|    2   |     0.2037 |   0.2063 |
+|    3   |     0.1983 |   0.2049 |
+|    4   |     0.1952 |   0.2039 |
+|    5   |     0.1927 |   0.2033 |
+|    6   |     0.1913 |   0.2033 |
+|    7   |     0.1901 |   0.2032 |
+|    8   |     0.1890 |   0.2030 |
+|    9   |     0.1883 |   0.2023 |
+|   10   |     0.1871 |   0.2032 |
+
 Berikut merupakan hasil visualisasi data latih dan data uji menggunakan metrik RMSE:
 
 <img width="400" src="https://github.com/danalvr/MLT-Assignment-Dicoding/assets/81479217/1a11b5f1-5a62-47be-be21-ca45c3fe4d28" alt="Metrik RMSE" />
 
-Berdasarkan hasil analisis dari grafik diatas model mengalami konvergen setelah _epoch_ ke-8 dan nilai RMSE mendekati nol yang menandakan bahwa hasil _training_ dari model rekomendasi memiliki kinerja yang baik.
+Gambar 5. Visualisasi data latih dan data uji dengan metrik RMSE
 
-Kesimpulan dari evaluasi yang dilakukan adalah sistem yang dibangun menggunakan teknik _content-based filtering_ dan _collaborative filtering_ dapat memberikan rekomendasi _film_ yang relevan dan dapat merespons secara akurat terhadap preferensi _film_ yang sangat beragam dari pengguna.
+Dalam analisis grafik diatas, dapat diketahui bahwa model memiliki kinerja yang relatif tinggi pada data latih. Hal ini mungkin disebabkan oleh sampel data yang sangat mirip atau cocok dengan sampel data uji. Namun, dari hasil uji coba, kinerja model terhadap data baru ternyata relatif rendah, sehingga memerlukan peningkatan kinerja pada data baru. Hal ini mengindikasikan bahwa model mengalami _overfitting_. Untuk mengoptimalkan model agar dapat memberikan rekomendasi yang lebih baik dapat dilakukan penyesuaian _hyperparameter_ untuk meningkatkan performa model.
+
+Kesimpulan dari evaluasi yang dilakukan adalah sistem yang dibangun menggunakan teknik _content-based filtering_ dan _collaborative filtering_ dapat memberikan rekomendasi _film_ yang relevan dan dapat merespons secara akurat terhadap preferensi _film_ yang sangat beragam dari pengguna. Namun, pada sistem rekomendasi yang dikembangkan menggunakan teknik _collaborative filtering_ terdapat indikasi _overfitting_ sehingga perlu dilakukan optimalisasi pada model tersebut.
